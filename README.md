@@ -6,7 +6,7 @@ Topic includes:
 
 0. Introduction
 
-1. Searcher and Planning
+1. Search and Planning
   - Search (Uniformed, Informed, Local, CSPs, Adversarial)
   - MDPs (Value Iteration, Policy Iteration)
   - RL (Temporal Difference Learning, Q Learning)
