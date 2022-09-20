@@ -1,21 +1,21 @@
 # COMP3270
-An introductory AI course offered by HKU
-This Github repo serves as a directory for the learning process about this course (Semester 1, 2022)
+Comp3270 is an introductory AI course offered by HKU.<br/>
+This Github repo serves as a directory for the learning process about this course. (Semester 1, 2022)
 
-Topic includes:
 
-0. Introduction
+<h2>Topic includes:</h2>
 
-1. Search and Planning
-  - Search (Uniformed, Informed, Local, CSPs, Adversarial)
-  - MDPs (Value Iteration, Policy Iteration)
-  - RL (Temporal Difference Learning, Q Learning)
-2. Probabilistic Reasoning
-  -
-  -
-  -
-3. Intro to Machine Learning
-  -
+* Introduction
+* Search and Planning
+  * Search (Uniformed, Informed, Local, CSPs, Adversarial)
+  * MDPs (Value Iteration, Policy Iteration)
+  * RL (Temporal Difference Learning, Q Learning)
+* Probabilistic Reasoning
+  * 1
+  * 2
+  * 3
+* Intro to Machine Learning
+  * 1
 
 Suggested Reading
 - [Artificial Intelligence: A Modern Approach(4th Edition)](http://aima.cs.berkeley.edu)
