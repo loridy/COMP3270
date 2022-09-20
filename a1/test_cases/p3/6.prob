@@ -1,0 +1,18 @@
+start_state: S
+goal_states: G
+S 0
+G 0
+a 0
+d 0
+b 0
+e 0
+c 0
+S a 3
+S d 2
+S G 10
+a b 5
+d b 1
+d e 4
+b c 2
+b e 1
+e G 3
