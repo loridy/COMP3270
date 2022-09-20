@@ -13,3 +13,6 @@ Topic includes:
   -
 3. Intro to Machine Learning
   -
+
+Suggested Reading
+- [Artificial Intelligence: A Modern Approach(4th Edition)](http://aima.cs.berkeley.edu)
