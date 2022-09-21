@@ -55,7 +55,7 @@
   * Forward checking (FC)
     * Filtering: keep track of domains for unassigned variables and cross off bad options
     * Cross off values that violate a constraint when added to the existing assignment
-  * Constraint propagation (AC-3)
+  * Constraint propagation (AC-3) - Check: [Arc consistency](https://www.youtube.com/watch?v=mo0gmLMC72E&ab_channel=AlanMackworth)
     * Constraint propagation repeatedly enforces constraints 
     * Arcs can become inconsistent - If X loses a value, it's neighbors need to be rechecked
     * **Arc consistency detects failure earlier than forward checking**
