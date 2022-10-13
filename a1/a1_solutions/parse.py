@@ -1,10 +1,6 @@
 import os, sys
 
-# make input a dictionary, with following keys: startState(str), goalState(list), graph(dict), and heuristic(dict)
 def read_graph_search_problem(file_path):
-    #Your p1 code here
-    # print("---------------- parse: ---------------- ")
-    # print("file path: ", file_path)
     with open(file_path) as file:
         lines = file.read().split("\n")
     startState = lines[0].split(": ")[1]
@@ -28,25 +24,15 @@ def read_graph_search_problem(file_path):
     problem["goalState"] = goalState
     problem["graph"] = graph
     problem["heuristic"] = heuristic
-    # print("startState: ", problem["startState"])
-    # print("goalState: ", problem["goalState"])
-    # print("graph: ", problem["graph"])
-    # print("heuristic: ", problem["heuristic"])
-    # print()
 
-    # below are original codes
-    # problem = ''
     return problem
 
-# make input an 8*8 list
 def read_8queens_search_problem(file_path):
-    #Your p6 code here;
 
     with open(file_path) as file:
         lines = file.read().split("\n")
     problem = [line.split() for line in lines]
-    # problem = ''
-    # print(problem)
+
     return problem
 
 if __name__ == "__main__":

@@ -1,2 +1,0 @@
-A B2 B1 C D E2
-A B1 C D E2 G

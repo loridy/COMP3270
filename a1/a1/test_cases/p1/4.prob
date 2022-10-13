@@ -1,0 +1,23 @@
+start_state: A
+goal_states: G
+A 0
+B1 0
+C 0
+B2 0
+D 0
+E1 0
+E2 0
+F 0
+G 0
+A B1 1.0
+A C 2.0
+A B2 4.0
+B1 C 8.0
+B2 C 16.0
+C D 32.0
+D E1 64.0
+D F 128.0
+D E2 256.0
+E1 F 512.0
+E2 F 1024.0
+F G 2048.0
