@@ -64,3 +64,65 @@
     * Minimum remaining values (MRV) - Choose the variable with the fewest legal left values in its domain and 
     * Degree Heuristic (Deg) - Choose the variable with the most constraints on remaining variable (own most arcs)
     * Least constraining value (LCV) - Choose the value that rules out the fewest values in remaining variables
+
+**Adversarial Search**
+
+* A multi-agent competitive environment 
+* Game Definition 
+  * s: States
+  * s0: Initial state
+  * Players: define which player makes the move
+  * Actions: 
+  * Result(s,a): define result of a move
+  * Terminal test: True when game is over
+  * Utility(s,p): defines final numeric value for a game that ends in terminal state s for player p 
+* A game tree can be constructed
+  * eg. tic-tac-toe(u=-1 if O wins, u=1 if X wins, and u=0 if no one wins)
+* Minimax Search
+  * A state-apce search tree
+  * Players alternate turns
+  * Compute each node's minimax value
+    * the best achievable utility against a rational(optimal) adversary
+    * Minimax(s) = 
+    *        Utility(s)                if Terminal-Test(s)
+    *        max(Minimax(Result(s,a))) if Player(s) = Max
+    *        min(Minimax(Result(s,a))) if Player(s) = Min
+  * Complete? **Yes**
+  * will **not** lead to optimal play
+    * optimal against perfect play
+    * Time complexity: O(
+$b^m$); Space complexity: O(bm)
+* DLS (Depth-limit Search)
+  * DFS-TSA with a depth limit and an evaluation function
+    * not complete if d > 1; complete if d <= 1
+    * not optimal
+    * time: O(
+  $b^l$); space: O(bl)
+  * Replace terminal utilities with an evaluation function for non-terminal positions
+  * Problem:
+    * No guarantee for optimal action
+    * Need to design evaluation function
+  * Evaluation Function: Eval(s)
+    * an estimate of the expected utility of the game from given position
+    * Ideal funcion: The actual minimax value of the position
+  * Depth Matters: the deeper the tree, the less quality of the evaluation function matters
+  * Horizon Effect: with low depth limit, we don't know some damage is ultimately unavoidable
+* Game Tree Pruning ($\alpha-\beta$ pruning algorithm)
+  * can determine minimax values without looking at all nodes
+  * eg. Min version:
+    * consider Min's value at node n
+    * if n < m, then Max will avoid n, thus no need to consider n's other children
+    * Key: for Max, get max(v) and compare it to $\beta$; if smaller, upadate $\alpha$
+  * Problem: can't determine root if node(a)=10, node(b)<=10; effectiveness depends on ordering
+  * O(
+$b^{m/2}$) rather than O(
+$b^m$)
+* Expectimax Search -- chance matter ( when the result of an action unknown)
+  * Values reflect average case outcomes, not worst case outcomes
+    * caculate expected utilities ( weighted average of children)
+* Expectiminimax Search
+* Multi-Agent Utilities
+  * Generalization of minimax
+    * terminals and nodes have utility vectors
+    * each player maximizes its own component
+    * Gives rise to cooperation and competition dynamically
