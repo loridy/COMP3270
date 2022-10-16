@@ -7,7 +7,7 @@ This Github repo serves as a directory for the learning process about this cours
 
 * Introduction
 * Search and Planning
-  * Search (Uniformed, Informed, Local, CSPs, Adversarial)
+  * [Search](./Lectures/Search.md) (Uniformed, Informed, Local, CSPs, Adversarial)
   * MDPs (Value Iteration, Policy Iteration)
   * RL (Temporal Difference Learning, Q Learning)
 * Probabilistic Reasoning
