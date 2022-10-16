@@ -7,9 +7,9 @@ This repository serves as a directory for the learning process about this course
 
 * Introduction
 * Search and Planning
-  * [Search](./Lectures/Search.md) (Uniformed, Informed, Local, CSPs, Adversarial)
-  * [MDPs](./Lectures/MDP.md) (Value Iteration, Policy Iteration)
-  * RL (Temporal Difference Learning, Q Learning)
+  * [Search](./Lectures_Notes/Search.md) (Uniformed, Informed, Local, CSPs, Adversarial)
+  * [MDPs](./Lecture_Notes/MDP.md) (Value Iteration, Policy Iteration)
+  * [RL](./Lecture_Notes/RL.md) (Temporal Difference Learning, Q Learning)
 * Probabilistic Reasoning
   * 1
   * 2
