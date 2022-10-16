@@ -1,6 +1,6 @@
 # COMP3270
 Comp3270 is an introductory AI course offered by HKU.<br/>
-This Github repo serves as a directory for the learning process about this course. (Semester 1, 2022)
+This repository serves as a directory for the learning process about this course. (Semester 1, 2022)
 
 
 <h2>Topic includes:</h2>
