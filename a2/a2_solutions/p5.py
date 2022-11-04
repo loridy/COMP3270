@@ -115,6 +115,7 @@ def get_max(copy_board, player, positions, depth):
     # print("Pacman finish depth:",depth,"<------------------")
     # print("finding: ", next, "with", max_val)
 
+
     # if depth greater than 1, meaning that it's not current depth, so return a value of the evaluation
     # if depth equals 1, meaning that it's current depth, 
     # and therefore should return a action instead of a value
@@ -173,16 +174,18 @@ def get_min(copy_board, player, positions, depth):
         for i in range(len(ghosts)-1):
             next_player[ghosts[i]] = ghosts[i+1]
 
-        if player not in next_player: # meaning that next player is pacman, so use maxi function
+        if player not in next_player: # meaning that next player is pacman
             if depth == k:
-                # terminal state
+            # reach the terminal state, and should calculate current evaluation
                 tmr_max = evaluate(board, tmr_positions)
-
             else:
+            # does not reach terminal state, so get value from next (pacman's) max value
                 tmr_max = get_max(board, "P", tmr_positions, depth+1)
         else:
+        # meaning that next player is a ghost, so get minimum value from next ghost
             tmr_max = get_min(board, next_player[player], tmr_positions, depth)[0]
         if util:
+        # if a food is eaten, add it to current value
             tmr_max += 500
         if tmr_max <= min_val:
             min_val = tmr_max
@@ -191,8 +194,9 @@ def get_min(copy_board, player, positions, depth):
     return min_val, next
 
 def next_move(board, player, positions):
-    
-    ghosts = [p for p in positions if p!="P"]
+    # get next move made by the player
+    # use minimax for player & ghosts
+
     # print("-----------------MINIMAX-----------------")
     if player == "P":
         # pacman plays as max agent
@@ -242,6 +246,8 @@ def next_move(board, player, positions):
     return next, "\n".join(copy)
 
 def possible_movements(board, player, positions):
+    # get a tuple of possible move for the player
+
     movements = {'N': (-1, 0), 'S': (1, 0), 'W': (0, -1), 'E': (0, 1)}
     ghosts = [p for p in positions if p!="P"]
     ghost_positions = [positions[g] for g in positions if g != "P"]

@@ -62,7 +62,6 @@ def next_move(board, player, positions):
             possible_move += tuple(move)
     if player == "W":
         next = random.choice(possible_move) # next refers to the movement direction
-        print("W moving: ", next)
     else:
         next = evaluation(board, positions, movements, possible_move)
         
@@ -88,7 +87,7 @@ def next_move(board, player, positions):
     w_row, w_col = positions["W"][0], positions["W"][1]
     copy[w_row] = copy[w_row][:w_col] + "W" + copy[w_row][w_col+1:]
     copy_board = "\n".join(copy)
-    print(copy_board)
+    # print(copy_board)
     return next, copy_board
 
 def evaluation(board, positions, movements, possible_move):
@@ -98,9 +97,7 @@ def evaluation(board, positions, movements, possible_move):
     p_row, p_col = positions["P"]
     g_row, g_col = positions["W"]
     evaluation = dict()
-    print("Selecting: --------------------------------------")
     for move in possible_move:
-        print("Move to:", move)
         row, col = p_row+movements[move][0] , p_col+movements[move][1]
         # distance_between_players = math.sqrt((row-g_row)**2+(col-g_col)**2)
         distance_between_players = abs(row-g_row)+abs(col-g_col)
@@ -124,8 +121,6 @@ def evaluation(board, positions, movements, possible_move):
             b = (len(board)**2+len(board[0])**2) / (num_of_food**0.5)
         else: # else, distance to both should be considered almost equally important
             b = math.sqrt(len(board)**2+len(board[0])**2) / (num_of_food ** 0.5) # more food, smaller b
-        print("evaluation function: ")
-        print(a,"*", distance_between_players,"+", b, "*", distance_between_food,"=", (a*distance_between_players+b*distance_between_food))
         evaluation[a*distance_between_players+b*distance_between_food] = move
     if len(evaluation)==0:
         return random.choice(possible_move)

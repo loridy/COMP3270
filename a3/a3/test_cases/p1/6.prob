@@ -1,0 +1,11 @@
+seed: 42
+noise: 0.1
+livingReward: -10
+grid:
+    _    _  100
+    S    #    #
+    _    _ -100
+policy:
+    E    E exit
+    S    #    #
+    E    E exit

@@ -10,7 +10,6 @@ def expecti_max_mulitple_ghosts(problem, k):
     winner = "Ghost"
     global score, nn
     seed, board = problem["seed"], problem["board"]
-    # random.seed(seed, version=1)
     nn = sum([r.count(".") for r in board])
     random.seed()
     # add position of existed players, and delete other players
@@ -21,14 +20,10 @@ def expecti_max_mulitple_ghosts(problem, k):
         if len(position) != 0:
             positions[p] = position[0]
     
-    # clear board
+    # clear board (board without players)
     for p in positions:
         row, col = positions[p]
         board[row] = board[row][:col]+" "+board[row][col+1:]
-    # print("\n".join(board))
-    # copy = makeboard(board, positions)
-    # print("\n".join(copy))
-    # add players
 
     players = dict()
     i = 0
@@ -45,7 +40,6 @@ def expecti_max_mulitple_ghosts(problem, k):
     solution.append("\n".join(makeboard(board, positions)))
     while True:
         turn += 1
-        # print(turn)
         next = next_move(board, players[(turn-1)%num], positions)
         solution.append(f"{turn}: {players[(turn-1)%num]} moving {next[0]}")
         solution.append(next[1])
@@ -59,11 +53,12 @@ def expecti_max_mulitple_ghosts(problem, k):
         if end == "Ghost":
             solution.append("WIN: Ghost")
             break
-        # if turn == 100:
-        #     break
+
     return "\n".join(solution), winner
 
 def get_max(copy_board, player, positions, depth):
+    # same with get_max in minimax method, except that it'll get excpectimax value from next player
+
     board = [row[:] for row in copy_board]
     num_of_food = sum([row.count(".") for row in board])
     # if no food on the board, get positive infinite utility
@@ -100,6 +95,9 @@ def get_max(copy_board, player, positions, depth):
     return next
 
 def expectimax(copy_board, player, positions, depth):
+    # calculate expected utility by giving each child state a weight(probability)
+    # return the expected utitliy
+
     # util represents if previous player eats a food (specifically for pacman)
     util = False 
     board = [row[:] for row in copy_board]
@@ -141,19 +139,23 @@ def expectimax(copy_board, player, positions, depth):
         if player not in next_player:
             # meaning this is the last ghost, so next player is pacman
             if depth==k:
-                # terminal state
+                # reach the terminal state
                 expected_util += prob*evaluate(board, tmr_positions)
             else:
-                # pass to pacman
+                # pass to next depth of expectimax search
                 expected_util += prob*get_max(board, "P", tmr_positions, depth+1)
         else:
             expected_util += prob*expectimax(board, next_player[player], tmr_positions, depth)
     if util:
+        # if food eaten, add to expected utility
         expected_util += 500
-        # print("hahah")
     return expected_util
 
 def next_move(board, player, positions):
+    # return a move made by player, and a board
+    # where pacman use expectimax search, ghost moves randomly
+
+
     if player == "P":
         next = get_max(board, player, positions, 1)
     else:
@@ -181,6 +183,9 @@ def next_move(board, player, positions):
 
 
 def possible_movements(board, player, positions):
+    # get a tuple of possible moves that can be made by player
+
+
     movements = {'N': (-1, 0), 'S': (1, 0), 'W': (0, -1), 'E': (0, 1)}
     ghosts = [p for p in positions if p!="P"]
     ghost_positions = [positions[g] for g in positions if g != "P"]
@@ -200,6 +205,8 @@ def possible_movements(board, player, positions):
 
 def makeboard(board, positions):
     # used to make a board with players shown on the board
+
+
     copy = [row[:] for row in board]
     for pp in positions:
         row, col = positions[pp]
@@ -208,6 +215,8 @@ def makeboard(board, positions):
 
 def check_end(board, player, positions):
     # used to check if game over, only used in main function
+
+
     global score, nn
     # if all food eaten -> P wins
     if player == "P":

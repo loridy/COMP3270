@@ -24,9 +24,9 @@ def better_play_mulitple_ghosts(problem):
     for player in positions:
         row, col = positions[player]
         board[row] = board[row][:col]+" "+board[row][col+1:]
-    print("\n".join(board))
+    # print("\n".join(board))
     copy = makeboard(board, positions)
-    print("\n".join(copy))
+    # print("\n".join(copy))
     # add players
     players = dict()
     i = 0
@@ -53,7 +53,6 @@ def better_play_mulitple_ghosts(problem):
             winner = "Pacman"
             break
         if end == "Ghost":
-            print("hi")
             solution.append("WIN: Ghost")
             break
         # if turn == 100:
@@ -89,7 +88,7 @@ def next_move(board, player, positions):
         if board[row+r][col+c] == '.':
             board[row+r] = board[row+r][:col+c]+" "+board[row+r][col+c+1:]
     copy = makeboard(board, positions)
-    print("\n".join(copy))
+    # print("\n".join(copy))
     return next, "\n".join(copy)
 
 
@@ -120,7 +119,6 @@ def possible_movements(board, player, positions):
 
 def check_end(board, player, positions):
     global score, nn
-    print("positions: ", positions)
     # if all food eaten -> P wins
     if player == "P":
         score -= 1
@@ -152,12 +150,10 @@ def evaluate(board, positions):
         if distances[ghost] == 0:
             die = True
     if die:
-        # print("Pac man died") # if pacman died, no need to evaluate
         return float("-inf")
     minimum = min([distances[ghost] for ghost in distances])
     while len(distances) > 1:
         minimum = min([distances[ghost] for ghost in distances])
-        # print(distances)
         for ghost in distances:
             if distances[ghost] == minimum:
                 del distances[ghost]
@@ -171,7 +167,6 @@ def evaluate(board, positions):
         foods += [(i,j) for j in range(len(board[i])) if board[i][j] == '.']
     d = [abs(p_row-food[0])+abs(p_col-food[1]) for food in foods] # distance between food
     if len(d) == 0:
-        # print("pacman eats all food")
         return float("inf")
     distance_between_food = 1/(min(d)+0.5) # smaller distance means higher preference
 

@@ -1,0 +1,8 @@
+discount: 1
+noise: 0.1
+livingReward: -0.01
+iterations: 20
+grid:
+    _    _    _    1
+    _    #    _   -1
+    S    _    _    _

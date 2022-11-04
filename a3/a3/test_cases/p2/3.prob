@@ -1,0 +1,14 @@
+discount: 0.9
+noise: 0.1
+livingReward: -0.1
+iterations: 10
+grid:
+  -10  100  -10
+  -10    _  -10
+  -10    _  -10
+  -10    S  -10
+policy:
+  exit exit exit
+  exit    N exit
+  exit    N exit
+  exit    N exit
