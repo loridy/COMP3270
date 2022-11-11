@@ -35,9 +35,9 @@ def play_episode(problem):
         # get next move
         p_row, p_col = player_position
         intended = policy[p_row][p_col]
-        next = next_move(grid, player_position, intended, noise)
+        next = next_move(intended, noise)
         experience.append("Taking action: {} (intended: {})".format(next, intended))
-        player_position = update_player(grid, player_position, next, livingReward)
+        player_position = update_player(grid, player_position, next)
         p_row, p_col = player_position
 
         # update reward
@@ -72,12 +72,12 @@ def play_episode(problem):
     return "\n".join(experience)
 
 
-def next_move(grid, player_position, intended, noise):
+def next_move(intended, noise):
     possible_move = {"N":["N", "E", "W"], "E":["E", "S", "N"], "S":["S", "W", "E"], "W":["W", "N", "S"]}
     next = random.choices(population=possible_move[intended], weights=[1-noise*2, noise, noise])[0]
     return next
 
-def update_player(grid, player_position, next, livingReward, ):
+def update_player(grid, player_position, next):
 
     movements = {'N': (-1, 0), 'S': (1, 0), 'W': (0, -1), 'E': (0, 1)}
     p_row, p_col = player_position
